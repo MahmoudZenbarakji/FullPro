@@ -17,4 +17,3 @@ password:{
 })
 
 module.exports =  mongoose.model('User',userSchema);
-//name email password

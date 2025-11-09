@@ -34,10 +34,10 @@ exports.createUser  = async (req,res) =>{
 exports.getUserByID = async (req,res) =>{
     try{
         const userId = req.params.id;
-        response = await User.findById(userId);
+        const user = await User.findById(userId);
         res.status(200).json({
             status:'success',
-            data:response
+            data:user
         });
     }catch(error){
         console.log(error)
@@ -62,7 +62,7 @@ exports.deleteUser= async (req,res) =>{
     try{    
         const delneeded = req.params.id;
         const user = await User.findByIdAndDelete(delneeded);
-        res.status(204).json({
+        res.status(200).json({
             status: 'success',
             data: user
         });

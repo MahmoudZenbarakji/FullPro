@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./db/connect');
 const  userRoutes = require('./Routes/userRoute')
+const courseRoute = require("./Routes/courseRoute")
+
 dotenv.config();
 
 const app = express();
@@ -17,6 +19,7 @@ connectDB();
 
 // ✅ Use user routes
 app.use('/api/users', userRoutes);
+app.use("/api/course",courseRoute)
 
 app.listen(PORT, (error) => {
   if (!error)
