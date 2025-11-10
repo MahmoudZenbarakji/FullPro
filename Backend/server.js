@@ -11,13 +11,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+
 app.use(express.json());
 
-// Connect to MongoDB
+
 connectDB();
 
-// ✅ Use user routes
+
 app.use('/api/users', userRoutes);
 app.use("/api/course",courseRoute)
 
