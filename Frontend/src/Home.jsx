@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
       try {
         const result = await axios.get('http://localhost:3000/api/course');
-        setCourses(result.data.data); // Adjust based on your backend response structure
+        setCourses(result.data.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
     };
     getData();
   }, []);
+
+  const handleViewDetails = (id) => {
+    navigate(`/course/${id}`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -32,6 +38,12 @@ const Home = () => {
               />
             )}
             <p className="text-sm text-gray-500">Created by: {course.user?.name || 'Unknown'}</p>
+            <button
+              onClick={() => handleViewDetails(course._id)}
+              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-200"
+            >
+              View Course Details
+            </button>
           </div>
         ))}
       </div>

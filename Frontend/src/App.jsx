@@ -5,6 +5,7 @@ import Course from './dashboard/course'
 import Home from './Home'
 import Nav from './components/Nav'
 import Login from './auth/Login'
+import CourseDetails from './courseDetails';
 function App() {
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/users" element={<User />} />
         <Route path="/courses" element={<Course />} />
+        <Route path="/course/:id" element={<CourseDetails />} />
       </Routes>
     </>
   )

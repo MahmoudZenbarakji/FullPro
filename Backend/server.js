@@ -6,6 +6,8 @@ const cors = require('cors');
 const connectDB = require('./db/connect');
 const  userRoutes = require('./Routes/userRoute')
 const courseRoute = require("./Routes/courseRoute")
+ const authRoutes = require('./routes/auth');
+ const protectedRoute = require("./Routes/protectedRoute")
 
 dotenv.config();
 
@@ -21,12 +23,11 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/uploads", express.static("uploads"));
-
+app.use('/api/users', userRoutes);
+app.use("/api/course",courseRoute)
 connectDB();
 
 
-app.use('/api/users', userRoutes);
-app.use("/api/course",courseRoute)
 
 app.listen(PORT, (error) => {
   if (!error)
