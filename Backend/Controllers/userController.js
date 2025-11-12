@@ -21,10 +21,10 @@ exports.createUser  = async (req,res) =>{
     try{
         const {name,email,password} = req.body;
         
-        const newUser = await User.create({name,email,password});
+        const newUser = (await User.create({name,email,password}))
         res.status(201).json({
             status:'success',
-            data:newUser
+            data:( newUser)
         });
     }catch(error){
         console.log(error);

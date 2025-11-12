@@ -2,9 +2,9 @@ import React from 'react'
 import { Route , Routes } from 'react-router-dom'
 import User from './dashboard/user'
 import Course from './dashboard/course'
-import Home from './dashboard/Home'
+import Home from './Home'
 import Nav from './components/Nav'
-import Login from './auth/login'
+import Login from './auth/Login'
 function App() {
 
 
