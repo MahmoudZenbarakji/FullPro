@@ -4,15 +4,13 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./db/connect');
-const  userRoutes = require('./Routes/userRoute')
+const userRoutes = require('./Routes/userRoute')
 const courseRoute = require("./Routes/courseRoute")
- const authRoutes = require('./routes/auth');
- const protectedRoute = require("./Routes/protectedRoute")
-
 dotenv.config();
-
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
+
+
 const corsOptions = {
   origin: ['http://localhost:5173'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
@@ -24,14 +22,14 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/uploads", express.static("uploads"));
 app.use('/api/users', userRoutes);
-app.use("/api/course",courseRoute)
+app.use("/api/course", courseRoute)
 connectDB();
 
 
 
-app.listen(PORT, (error) => {
+app.listen(port, (error) => {
   if (!error)
-    console.log(`✅ Server running at http://localhost:${PORT}`);
+    console.log(`✅ Server running at http://localhost:${port}`);
   else
     console.log('❌ Error starting server:', error);
 });

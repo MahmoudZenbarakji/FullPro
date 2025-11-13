@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import environments from "../environments/environment"
 const Home = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async () => { 
       try {
-        const result = await axios.get('http://localhost:3000/api/course');
+        const result = await axios.get(`${environments.baseUrl}/course`);
         setCourses(result.data.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
